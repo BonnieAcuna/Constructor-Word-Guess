@@ -14,9 +14,9 @@ const startGame = function(){
 const game = new startGame();
 const userGuess = 10;
 
-	// prompt.start(); //starting the prompt
-	// letTheGameBegin(userGuess);
-//=====================================================================================
+	
+	letTheGameBegin(userGuess);
+
 		function letTheGameBegin(guesses){
 			console.log("Guesses left: " + guesses);
 			if(game.currentWord.comparingWords() == true){

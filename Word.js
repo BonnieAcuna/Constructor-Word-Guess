@@ -8,7 +8,7 @@ const Movie = function(words){
 	this.guesses = [];
 
 	
-	this.grabLetters = function(){
+	this.pickLetters = function(){
 		for(let i = 0; i <this.words.length; i++){
 			let newLetter = new Letter(this.words[i]);
 			this.guessedWord.push(newLetter);
