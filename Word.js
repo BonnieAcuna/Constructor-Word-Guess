@@ -1,16 +1,16 @@
 const Letter = require('./Letters.js');
 
-const Movie = function(words){
+const Movie = function(word){
 	
-	this.words = words;
+	this.word = word;
 	this.guessedWord = [];
 	this.youWin = false;
 	this.guesses = [];
 
 	
 	this.pickLetters = function(){
-		for(let i = 0; i <this.words.length; i++){
-			let newLetter = new Letter(this.words[i]);
+		for(let i = 0; i <this.word.length; i++){
+			let newLetter = new Letter(this.word[i]);
 			this.guessedWord.push(newLetter);
 
 		}
@@ -30,7 +30,7 @@ const Movie = function(words){
 		
 		for(let i = 0; i <this.guessedWord.length;i++){
 			
-			if(this.guessedWord[i].letterin(guessLetter)){
+			if(this.guessedWord[i].rightLetter(guessLetter)){
 				this.guessedWord[i].showsLetter = true;
 				added = true;
 			} 
@@ -40,9 +40,9 @@ const Movie = function(words){
 	}
 	
  	this.comparingWords = function(){
- 		for(let i = 0; i < this.words.length; i++){
+ 		for(let i = 0; i < this.word.length; i++){
  			
- 			if(this.words.charAt(i) != this.guessedWord[i].current){
+ 			if(this.word.charAt(i) != this.guessedWord[i].current){
  				return false;
  			}
 
@@ -54,7 +54,7 @@ const Movie = function(words){
 		let emptyString = "";
 			
 		for(let i = 0; i <this.guessedWord.length; i++){
-			emptyString += this.guessedWord[i].current + " ";
+			emptyString += this.guessedWord[i].lettersGuessed() + " ";
 		}
 		return emptyString;
 	}

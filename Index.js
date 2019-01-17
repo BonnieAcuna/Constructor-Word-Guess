@@ -1,13 +1,13 @@
 const Movie = require('./Word.js');
 
-const inquirer = require("inquirer");
+// const inquirer = require("inquirer");
 
 
 const startGame = function(){
 	this.movies = ["spaceballs", "goodfellas", "jaws", "titanic", "rocky", "batman"];
 
 	this.randomWord = this.movies[ Math.floor(Math.random() * this.movies.length)];
-	this.currentWord = new Movie(this.randomWord);
+	this.currentGame = new Movie(this.randomWord);
 	
 }
 	
@@ -19,7 +19,7 @@ const userGuess = 10;
 
 		function letTheGameBegin(guesses){
 			console.log("Guesses left: " + guesses);
-			if(game.currentWord.comparingWords() == true){
+			if(game.currentGame.comparingWords() == true){
 				console.log("You win");
 				return;
 			}
@@ -30,22 +30,12 @@ const userGuess = 10;
 			}
 
 		
-		console.log(game.currentWord.display());
+		console.log(game.currentGame.display());
 
-	prompt.get(["theGuess"], function(err, result){
-		if(err){
-			return err;
-		}
-		
-		if(game.currentWord.rightLetter(result.theGuess) == false){
-			guesses --;
-		}
-		letTheGameBegin(guesses);
-
-	});
+	
 }
 
-
+startGame();
 
 
 
