@@ -9,45 +9,49 @@ const Movie = function(word){
 
 	
 	this.pickLetters = function(){
-		for(let i = 0; i <this.word.length; i++){
+		for(let i = 0; i < this.word.length; i++){
 			let newLetter = new Letter(this.word[i]);
 			this.guessedWord.push(newLetter);
 
 		}
 	}
-	this.pickLetters();
 
 	this.rightLetter = function(guessLetter){
-		for(let i = 0; i <this.guesses.length; i++){
-			if(guessLetter == this.guesses[i]){
-				return true;
+		if(this.guesses.indexOf(guessLetter) < 0) {
+		this.guesses.push(guessLetter);
+
+		let match = null;
+
+		for(let i = 0; i < this.guessedWord.length; i++){
+			const matchedLetter = this.guessedWord[i].letterMatch(guessLetter);
+			if(matchedLetter){
+				match = guessLetter;
 			}
 		}
-		console.log(guessLetter);
-		const added = false;
 
-		this.guesses.push(guessLetter);
-		
-		for(let i = 0; i <this.guessedWord.length;i++){
-			
-			if(this.guessedWord[i].rightLetter(guessLetter)){
-				this.guessedWord[i].showsLetter = true;
-				added = true;
-			} 
+		if(match){
+			console.log('You got a match with letter ' + match);
+			console.log(this.display());
+			return;
 		}
-		return added;
-
+		
+		console.log('You did not get a match');
+	}
+	else {
+		console.log('You aalready guess htis letter');
+	}
 	}
 	
- 	this.comparingWords = function(){
- 		for(let i = 0; i < this.word.length; i++){
- 			
- 			if(this.word.charAt(i) != this.guessedWord[i].current){
- 				return false;
- 			}
+ 	this.isWordComplete = function(){
+		 let wordCompleted = true;
+		 
+		 this.guessedWord.map(function(letter){
+			if(!letter.guessed){
+				wordCompleted = false;
+			}
+		 });
 
- 		}
- 				return true;
+		 return wordCompleted;
  	}
  	
 	this.display = function(){
@@ -61,7 +65,21 @@ const Movie = function(word){
 	
 } 
 
+// const someMovie = new Movie('Terminator');
+// someMovie.pickLetters();
+// console.log(someMovie.display());
+// someMovie.rightLetter('t');
+// console.log(someMovie.isWordComplete());
 
+// someMovie.rightLetter('e');
+// someMovie.rightLetter('r');
+// someMovie.rightLetter('m');
+// someMovie.rightLetter('i');
+// someMovie.rightLetter('n');
+// someMovie.rightLetter('a');
+// someMovie.rightLetter('o');
+// someMovie.rightLetter('r');
+// console.log(someMovie.isWordComplete());
 
 
 module.exports = Movie;

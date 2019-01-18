@@ -10,6 +10,13 @@ function Letter(letter) {
         return this.letter;
       }
     }
+    this.letterMatch = function(letter) {
+      const lettersMatch = letter.toLowerCase() === this.letter.toLowerCase();
+      if(lettersMatch){
+        this.guessed = true;
+      }
+      return this.guessed;
+    }
   }
 
 module.exports = Letter;
