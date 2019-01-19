@@ -7,7 +7,8 @@ const Movie = function(word){
 	this.youWin = false;
 	this.guesses = [];
 
-	
+// console.log(word);
+
 	this.pickLetters = function(){
 		for(let i = 0; i < this.word.length; i++){
 			let newLetter = new Letter(this.word[i]);
@@ -28,17 +29,17 @@ const Movie = function(word){
 				match = guessLetter;
 			}
 		}
-
+		console.log("IAM THE MATCH"+match);
 		if(match){
 			console.log('You got a match with letter ' + match);
-			console.log(this.display());
+			console.log(this.displayWord());
 			return;
 		}
 		
 		console.log('You did not get a match');
 	}
 	else {
-		console.log('You aalready guess htis letter');
+		console.log('You already guessed this letter');
 	}
 	}
 	
@@ -54,7 +55,7 @@ const Movie = function(word){
 		 return wordCompleted;
  	}
  	
-	this.display = function(){
+	this.displayWord = function(){
 		let emptyString = "";
 			
 		for(let i = 0; i <this.guessedWord.length; i++){
