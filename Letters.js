@@ -15,7 +15,7 @@ function Letter(letter) {
       if(lettersMatch){
         this.guessed = true;
       }
-      return this.guessed;
+       this.guessed;
     }
   }
 

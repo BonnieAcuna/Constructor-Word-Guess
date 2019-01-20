@@ -40,22 +40,24 @@ function guessMovie() {
 	inquirer.prompt([{
 			type: 'input',
 			name: 'letterInput',
-			message: '\nChoose a letter' + "\n"
+			message: 'Choose a letter' + "\n"
 				+ movie.displayWord() +
 				'\nGuesses left ' + guesses
 				+ "\n"
 		}])
 		.then(function (answer) {
-			console.log(answer);
-			// console.log(movie);
+			
 			movie.guessedWord.forEach(letter => {
 				letter.letterMatch(answer.letterInput);
 				screening.push(letter.lettersGuessed());
 			});
+
+			movie.rightLetter(answer);
 			
 			if (guesses > 0 && screening.indexOf("_") !== -1) {
 				guesses--;
 				if (guesses === 0) {
+					console.log(answer);
 					console.log("Game Over!");
 					newMovie();
 				} else {
