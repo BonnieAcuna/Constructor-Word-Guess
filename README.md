@@ -15,3 +15,5 @@ When the user types in node index.js in the bash it will prompt for the user to 
 
 
 Click here for video ====> https://drive.google.com/file/d/1FvZbhHFY71MUYLYrb1sCmgCiPXxZjLDN/view
+
+Updated Portfolio: https://bonnieacuna.github.io/Updated-Portfolio
